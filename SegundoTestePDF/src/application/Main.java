@@ -8,18 +8,10 @@ import java.io.IOException;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
-import javax.lang.model.element.ElementKind;
 
-import org.w3c.dom.css.RGBColor;
-
-import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.layout.element.Text;
 import com.itextpdf.io.image.ImageDataFactory;
-import com.itextpdf.kernel.font.PdfFontFactory;
-import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.kernel.pdf.colorspace.PdfDeviceCs.Rgb;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.borders.Border;
 import com.itextpdf.layout.element.AreaBreak;
@@ -35,10 +27,12 @@ import com.itextpdf.kernel.colors.*;
 
 
 import javafx.application.Application;
+import javafx.css.FontFace;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+
 import javafx.scene.Scene;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.chart.LineChart;
@@ -58,6 +52,7 @@ public class Main extends Application {
 	
 	// Caminho do arquivo PDF
 	public static final String RESULT = "C:\\Users\\fdm30\\Desktop\\ESchool\\GerarPDF\\SegundoTestePDF\\PDF\\SegundoTeste.pdf";
+	 
 	
 	@FXML
     private void initialize() {
@@ -230,8 +225,10 @@ public class Main extends Application {
 			}
 		}
 		
-		document.add(table);
+		table.setHorizontalAlignment(HorizontalAlignment.CENTER);
+		table.setVerticalAlignment(VerticalAlignment.BOTTOM);
 		
+		document.add(table);
 		document.add(new Paragraph(content[content.length-1].toUpperCase())
 				.setBold()
 				.setFontSize(20)
